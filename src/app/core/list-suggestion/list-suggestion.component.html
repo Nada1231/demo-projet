@@ -1,1 +1,26 @@
-<p>list-suggestion works!</p>
+<h2>Liste des suggestions</h2>
+
+<div *ngFor="let s of suggestions" class="suggestion-card">
+  
+  <h3>{{ s.title }}</h3>
+
+  <p>{{ s.description }}</p>
+
+  <p>
+    <strong>Catégorie :</strong> {{ s.category }}
+  </p>
+
+  <p>
+    <strong>Date :</strong> {{ s.date | date:'dd/MM/yyyy' }}
+  </p>
+
+  <p>
+    <strong>Likes :</strong> {{ s.nbLikes }}
+  </p>
+
+  <p>
+    <strong>Statut :</strong> {{ s.status }}
+  </p>
+
+  <hr>
+</div>
