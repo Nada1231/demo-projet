@@ -1,23 +1,47 @@
-<h2>Liste des suggestions</h2>
+<h2 class="title">Liste des suggestions</h2>
 
-<div *ngFor="let s of suggestions" class="suggestion-card">
+<input
+  type="text"
+  class="search-input"
+  placeholder="Rechercher une suggestion (titre ou catégorie)"
+  [(ngModel)]="searchText"
+/>
 
-  <h3>{{ s.title }}</h3>
-  <p>{{ s.description }}</p>
-  <p><strong>Catégorie :</strong> {{ s.category }}</p>
-  <p><strong>Likes :</strong> {{ s.nbLikes }}</p>
-  <p><strong>Statut :</strong> {{ s.status }}</p>
+<div *ngFor="let s of filteredSuggestions" class="suggestion-card">
 
-  <!-- Boutons visibles seulement si la suggestion n'est pas refusée -->
-  <div *ngIf="s.status !== 'refusee'">
-    <button (click)="likeSuggestion(s)">
+  <div class="card-header">
+    <h3>{{ s.title }}</h3>
+    <span class="badge category">{{ s.category }}</span>
+  </div>
+
+  <p class="description">{{ s.description }}</p>
+
+  <p class="meta">
+    <span><strong>Date :</strong> {{ s.date | date:'dd/MM/yyyy' }}</span>
+    <span
+      class="badge"
+      [ngClass]="{
+        'accepted': s.status === 'acceptee',
+        'refused': s.status === 'refusee',
+        'pending': s.status === 'en_attente'
+      }"
+    >
+      {{ s.status }}
+    </span>
+  </p>
+
+  <p class="likes">
+    👍 Likes : {{ s.nbLikes }}
+  </p>
+
+  <div class="actions" *ngIf="s.status !== 'refusee'">
+    <button class="btn like" (click)="likeSuggestion(s)">
       👍 Like
     </button>
 
-    <button (click)="addToFavorites(s)">
+    <button class="btn fav" (click)="addToFavorites(s)">
       ⭐ Ajouter aux favoris
     </button>
   </div>
 
-  <hr>
 </div>
