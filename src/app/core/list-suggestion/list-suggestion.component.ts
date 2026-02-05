@@ -7,7 +7,7 @@ import { Suggestion } from '../../models/suggestion';
 })
 export class ListSuggestionComponent {
 
-suggestions: Suggestion[] = [
+  suggestions: Suggestion[] = [
     {
       id: 1,
       title: 'Organiser une journée team building',
@@ -25,25 +25,17 @@ suggestions: Suggestion[] = [
       date: new Date('2025-01-15'),
       status: 'refusee',
       nbLikes: 0
-    },
-    {
-      id: 3,
-      title: 'Créer un système de récompenses',
-      description: 'Programme de récompenses pour les employés.',
-      category: 'Ressources Humaines',
-      date: new Date('2025-01-25'),
-      status: 'refusee',
-      nbLikes: 0
-    },
-    {
-      id: 4,
-      title: 'Moderniser l\'interface utilisateur',
-      description: 'Refonte complète de l’interface utilisateur.',
-      category: 'Technologie',
-      date: new Date('2025-01-30'),
-      status: 'en_attente',
-      nbLikes: 0
     }
   ];
 
+  favorites: Suggestion[] = [];
+
+  likeSuggestion(s: Suggestion) {
+    s.nbLikes++;
+  }
+
+  addToFavorites(s: Suggestion) {
+    this.favorites.push(s);
+  }
 }
+
