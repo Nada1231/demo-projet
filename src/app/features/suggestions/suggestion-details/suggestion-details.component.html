@@ -1,0 +1,10 @@
+<h2>Détails de la suggestion</h2>
+
+<div *ngIf="suggestion">
+  <h3>{{ suggestion.title }}</h3>
+  <p>{{ suggestion.description }}</p>
+  <p>Category: {{ suggestion.category }}</p>
+  <p>Likes: {{ suggestion.nbLikes }}</p>
+</div>
+
+<a routerLink="/suggestions">Back to list</a>

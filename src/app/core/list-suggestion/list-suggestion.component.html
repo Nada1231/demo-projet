@@ -42,6 +42,11 @@
     <button class="btn fav" (click)="addToFavorites(s)">
       ⭐ Ajouter aux favoris
     </button>
+
+    <!-- BOUTON DETAILS (Workshop 3) -->
+    <button class="btn details" [routerLink]="['/suggestions', s.id]">
+      Details
+    </button>
   </div>
 
 </div>
