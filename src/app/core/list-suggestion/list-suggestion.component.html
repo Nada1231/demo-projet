@@ -1,8 +1,6 @@
 <h2 class="title">Liste des Suggestions</h2>
 
-<!-- Bouton Ajouter suggestion -->
-<button class="btn add-suggestion" [routerLink]="'/suggestions/form'">Ajouter une Suggestion</button>
-
+<!-- Zone de recherche -->
 <input
   type="text"
   class="search-input"
@@ -10,6 +8,7 @@
   [(ngModel)]="searchText"
 />
 
+<!-- Liste des suggestions avec le bouton 'Ajouter aux favoris' et 'Like' -->
 <div *ngFor="let suggestion of filteredSuggestions" class="suggestion-card">
   <div class="card-header">
     <h3>{{ suggestion.title }}</h3>
@@ -19,4 +18,26 @@
   <p class="description">{{ suggestion.description }}</p>
 
   <button class="btn details" [routerLink]="['/suggestions', suggestion.id]">Voir Détails</button>
+
+  <!-- Boutons Like et Ajouter aux favoris -->
+  <div class="actions">
+    <button class="btn like" (click)="likeSuggestion(suggestion)">
+      👍 Like ({{ suggestion.nbLikes }})
+    </button>
+
+    <button class="btn fav" (click)="addToFavorites(suggestion)">
+      ⭐ Ajouter aux favoris
+    </button>
+  </div>
+</div>
+
+<!-- Section pour afficher les favoris -->
+<h3>Favoris</h3>
+<div *ngFor="let favorite of favorites" class="suggestion-card">
+  <div class="card-header">
+    <h3>{{ favorite.title }}</h3>
+    <span class="badge category">{{ favorite.category }}</span>
+  </div>
+
+  <p class="description">{{ favorite.description }}</p>
 </div>

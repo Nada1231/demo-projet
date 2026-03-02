@@ -9,11 +9,19 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'listSuggestion', component: ListSuggestionComponent },
-  { path: 'suggestions/form', component: SuggestionFormComponent },  // Déplacer cette ligne avant **
+  
+  // Déplacer cette ligne avant la route 'suggestions'
+  { path: 'suggestions/form', component: SuggestionFormComponent },
+
+  // Lazy loading pour suggestions
   { path: 'suggestions', loadChildren: () => import('./features/suggestions/suggestions.module').then(m => m.SuggestionsModule) },
+
   { path: 'users', loadChildren: () => import('./features/users/users.module').then(m => m.UsersModule) },
+  
+  // Route par défaut
   { path: '**', component: NotfoundComponent }
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
