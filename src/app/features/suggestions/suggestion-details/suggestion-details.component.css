@@ -1,0 +1,28 @@
+h2 {
+  text-align: center;
+  font-size: 28px;
+  color: #3498db;
+}
+
+div {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+a.back {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #2980b9;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+a.back:hover {
+  background-color: #3498db;
+}

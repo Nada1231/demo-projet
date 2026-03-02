@@ -1,0 +1,33 @@
+/* Styles du formulaire */
+.form-group {
+  margin-bottom: 20px;
+}
+
+input, select, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button {
+  background-color: #2980b9;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #3498db;
+}
+
+small {
+  color: red;
+}

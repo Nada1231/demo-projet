@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-suggestion-form',
   templateUrl: './suggestion-form.component.html',
-  styleUrl: './suggestion-form.component.css'
+  styleUrls: ['./suggestion-form.component.css']
 })
 export class SuggestionFormComponent implements OnInit {
   suggestionForm!: FormGroup;
@@ -47,7 +48,6 @@ export class SuggestionFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.suggestionForm.valid) {
-      // Ajoute la suggestion à la liste (ceci est un exemple simple, tu peux adapter selon ton store ou ta logique)
       const newSuggestion = this.suggestionForm.value;
       console.log('Suggestion soumise:', newSuggestion);
       // Redirige vers la liste des suggestions après la soumission

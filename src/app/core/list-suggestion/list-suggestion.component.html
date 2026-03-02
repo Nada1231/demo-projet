@@ -1,4 +1,7 @@
-<h2 class="title">Liste des suggestions</h2>
+<h2 class="title">Liste des Suggestions</h2>
+
+<!-- Bouton Ajouter suggestion -->
+<button class="btn add-suggestion" [routerLink]="'/suggestions/form'">Ajouter une Suggestion</button>
 
 <input
   type="text"
@@ -7,45 +10,13 @@
   [(ngModel)]="searchText"
 />
 
-<div *ngFor="let s of filteredSuggestions" class="suggestion-card">
-
+<div *ngFor="let suggestion of filteredSuggestions" class="suggestion-card">
   <div class="card-header">
-    <h3>{{ s.title }}</h3>
-    <span class="badge category">{{ s.category }}</span>
-  </div>
-  <button [routerLink]="['/suggestions/form']">Ajouter suggestion</button>  <p class="description">{{ s.description }}</p>
-
-  <p class="meta">
-    <span><strong>Date :</strong> {{ s.date | date:'dd/MM/yyyy' }}</span>
-    <span
-      class="badge"
-      [ngClass]="{
-        'accepted': s.status === 'acceptee',
-        'refused': s.status === 'refusee',
-        'pending': s.status === 'en_attente'
-      }"
-    >
-      {{ s.status }}
-    </span>
-  </p>
-
-  <p class="likes">
-    👍 Likes : {{ s.nbLikes }}
-  </p>
-
-  <div class="actions" *ngIf="s.status !== 'refusee'">
-    <button class="btn like" (click)="likeSuggestion(s)">
-      👍 Like
-    </button>
-
-    <button class="btn fav" (click)="addToFavorites(s)">
-      ⭐ Ajouter aux favoris
-    </button>
-
-    <!-- BOUTON DETAILS (Workshop 3) -->
-    <button class="btn details" [routerLink]="['/suggestions', s.id]">
-      Details
-    </button>
+    <h3>{{ suggestion.title }}</h3>
+    <span class="badge category">{{ suggestion.category }}</span>
   </div>
 
+  <p class="description">{{ suggestion.description }}</p>
+
+  <button class="btn details" [routerLink]="['/suggestions', suggestion.id]">Voir Détails</button>
 </div>
