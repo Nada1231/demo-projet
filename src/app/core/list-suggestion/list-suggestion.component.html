@@ -13,7 +13,7 @@
     <h3>{{ s.title }}</h3>
     <span class="badge category">{{ s.category }}</span>
   </div>
-
+  <button [routerLink]="['/suggestions/form']">Ajouter suggestion</button>
   <p class="description">{{ s.description }}</p>
 
   <p class="meta">
