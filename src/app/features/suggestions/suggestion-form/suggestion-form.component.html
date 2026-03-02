@@ -1,1 +1,32 @@
-<p>suggestion-form works!</p>
+<form [formGroup]="suggestionForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="title">Titre</label>
+    <input id="title" formControlName="title" />
+    <div *ngIf="title?.invalid && title?.touched">
+      <small *ngIf="title?.errors?.['required']">Le titre est requis.</small>
+      <small *ngIf="title?.errors?.['minlength']">Le titre doit contenir au moins 5 caractères.</small>
+      <small *ngIf="title?.errors?.['pattern']">Le titre doit commencer par une majuscule et contenir uniquement des lettres.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <input id="description" formControlName="description" />
+    <div *ngIf="description?.invalid && description?.touched">
+      <small *ngIf="description?.errors?.['required']">La description est requise.</small>
+      <small *ngIf="description?.errors?.['minlength']">La description doit contenir au moins 30 caractères.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="category">Catégorie</label>
+    <select id="category" formControlName="category">
+      <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+    </select>
+    <div *ngIf="category?.invalid && category?.touched">
+      <small>La catégorie est requise.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="suggestionForm.invalid">Soumettre</button>
+</form>
